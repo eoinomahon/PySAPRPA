@@ -159,7 +159,7 @@ class ObjectTree:
         Example
         -------
         >>> object_tree.get_objects()
-        >>> Parsed and named SAP objects. Stored objects in sap_fields_dict
+        >>> Parsed and named SAP objects. Stored labels and object ids (where objects are) in sap_fields_dict
         """
         try:
             object_tree = self.session.GetObjectTree(f'wnd[{window}]', self.info_retrieved_list)
@@ -467,7 +467,7 @@ class ObjectTree:
         Example
         -------
         >>> object_tree.export(how='spreadsheet', directory='/fake/path', file_name='EXAMPLE.XLSX')
-        >>> Now you are back on the menu
+        >>> Exported SAP data as spreadsheet
         """
         import os
 
