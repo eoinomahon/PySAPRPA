@@ -56,4 +56,9 @@ For detailed information and examples, please refer to the [PySAPRPA Documentati
 - Project is still in beta, and updates are coming soon.
 - If you encounter any issues or find bugs, please feel free to contact me!
 
+## Coming Soon
+- Export all file types
+- get_objects() support for GuiShell objects
+- ComboBox object support
+
 ---
