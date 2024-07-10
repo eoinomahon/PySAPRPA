@@ -121,6 +121,14 @@ class ObjectTree:
         >>> object_tree.end_transaction()
         >>> Now you are back on the menu
         """
+        # Reset the mentioned attributes to their original value
+        self.object_tree = None
+        self.sap_fields_dict = {}
+        self.vkey_map = {}
+        self.repeat_field_label_dict = {}
+        self.object_left_label = []
+        self.export_options_dict = {}
+        
         self.session.EndTransaction()
         return self
 
