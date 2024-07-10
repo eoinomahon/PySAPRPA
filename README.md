@@ -1,6 +1,19 @@
-# PySAPRPA
+# PySAPRPA: Effortlessly Automate Your SAP Processes 
 
-PySAPRPA—a Python library for RPA functions in SAP GUI. PySAPRPA provides an easy-to-use interface for automating tasks within the SAP GUI environment.
+PySAPRPA is a Python library designed to supercharge your SAP automation efforts.
+
+### Here's how it works: ###
+* **Intelligent Object Identification:**  PySAPRPA automatically detects and labels SAP objects, eliminating the tedious and error-prone manual process of object extraction.
+* **Environment-Agnostic Scripts:**  PySAPRPA eliminates the headache of environment-dependent scripts, enabling you to automate confidently across SAP landscapes.
+
+**Benefits:**
+
+* **Accelerated Development:**  Focus on your automation logic, not object identification. PySAPRPA significantly reduces development time and effort.
+* **Increased Reliability:**  Environment-agnostic scripts ensure your automations remain robust and reliable regardless of SAP system changes.
+* **Simplified Maintenance:**  Clear object labeling makes scripts easier to understand, debug, and maintain.
+
+**Note:** Extensive testing is still pending. 
+
 
 ## Installation
 
@@ -19,10 +32,10 @@ To install PySAPRPA, follow these steps:
 
 ## Usage
 
-Getting started with PySAPRPA is straightforward. Simply import the library and start using its functions. Here's an example:
+Getting started with PySAPRPA is straightforward. Import the library to start using its functions. Here's an example:
 
 ```python
-import pysaprpa
+import pysaprpa as saprpa
 # Use the library's functions here
 ```
 
