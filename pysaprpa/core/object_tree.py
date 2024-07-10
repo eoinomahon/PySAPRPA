@@ -58,7 +58,7 @@ class ObjectTree:
             if self.session is None:
                 raise Exception("Failed to connect to SAP")
         self.date_format = date_format
-        self.info_retrieved_list = ['Id', 'Text', 'Type', 'Changeable', 'Name', 'IconName', 'Top', 'ScreenLeft', 'ScreenTop', 'Top', 'Height']
+        self.info_retrieved_list = ['Id', 'Text', 'Type', 'Changeable', 'Name', 'IconName']
         self.object_tree = None
         self.sap_fields_dict = {}
         self.vkey_map = {}
@@ -167,7 +167,7 @@ class ObjectTree:
             self.object_tree = parsed_data['children']
         
         except Exception:
-            raise ValueError('User does not have permission to us session.GetObjectTree. Speak to your SAP admins')
+            raise ValueError('User does not have permission to use session.GetObjectTree. Speak to your SAP admins')
 
         # Move the parsing logic here
         self.FIELD_TYPE_MAP = {
@@ -248,7 +248,7 @@ class ObjectTree:
                     self._process_menu_object(object_id, object_text)
                 elif object_type == 'SHELL':
                     pass
-                    #self._process_shell_object()
+                    #self._process_shell_object() coming soon!
                 else:
                     dict_key = object_left_label[-1] + '_' + object_type
                     sap_fields_dict.setdefault(dict_key, []).append(object_id)
@@ -473,7 +473,10 @@ class ObjectTree:
 
         file_exists = helper_utils._check_path_valid(how, directory, file_name)
         if self.export_options_dict is None:
-            raise ValueError('Export options not found')
+            raise ValueError('Export options not found. If calling t-code with GuiShell: get_objects can\'t find objects in GuiShells, yet. Else, ')
+
+        if file_name.split('.')[-1].upper() not in ['XLSX', 'XLS']:
+            raise ValueError('Library only supports exporting excel files for the time being')
 
         export_option_id = self.export_options_dict.get(how, None)
         self.session.FindById(export_option_id).select()
