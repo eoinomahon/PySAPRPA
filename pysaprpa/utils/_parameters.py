@@ -1,5 +1,6 @@
 from pysaprpa.utils.validation._validate import ValidUtils as valid_utils
 from pysaprpa.utils.add_func._button import SAPGUIButtonUtils as button_utils
+from typing import Union
 import pandas as pd
 
 class SAPGUIParameterUtils:
@@ -103,7 +104,7 @@ class SAPGUIParameterUtils:
                     self.session.FindById(object_ids[ind]).text = ''    
             return
 
-        if isinstance(user_input, str):
+        if isinstance(user_input, Union[str, int]):
             date = valid_utils._check_date_valid(user_input, i=0, date_format=self.date_format)
             self.session.findbyid(object_ids[0]).text = date
 
