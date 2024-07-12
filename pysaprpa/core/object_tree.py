@@ -284,10 +284,11 @@ class ObjectTree:
         self.sap_fields_dict.setdefault(dict_key, []).append(object_id)
 
     def _process_menu_object(self, object_id, object_text):
-        field_text, self.repeat_field_label_dict = helper_utils._modify_repeat_name(object_text, self.repeat_field_label_dict)
         parent_text = helper_utils._clean_field_text(self.session.FindById(object_id).parent.text)
 
         if parent_text == 'export':
+            # Don't add label to repeat_field_name_dict unless we're actually using label
+            field_text, self.repeat_field_label_dict = helper_utils._modify_repeat_name(object_text, self.repeat_field_label_dict)
             self.export_options_dict.setdefault(field_text, object_id)
     
     def _process_shell_object(self):
