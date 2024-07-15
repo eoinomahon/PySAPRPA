@@ -52,3 +52,17 @@ class HelperUtils():
             field_text = field_text + f'_{name_freq}'
         
         return field_text, repeat_name_dict
+    
+    @staticmethod
+    def _find_shell_export(session):
+        try:
+            session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").pressToolbarContextButton("&NAVIGATION_PROFILE_TOOLBAR_EXPAND")
+        except Exception:
+            pass # Expand button already expanded or doesn't exist
+
+        try:
+            session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").pressToolbarContextButton("&MB_EXPORT")
+            session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").SelectContextMenuItem("&XXL")
+
+        except Exception:
+            raise ValueError('Export not option')

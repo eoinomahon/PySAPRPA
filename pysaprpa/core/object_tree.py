@@ -473,14 +473,15 @@ class ObjectTree:
         import os
 
         file_exists = helper_utils._check_path_valid(how, directory, file_name)
-        if self.export_options_dict is None:
-            raise ValueError('Export options not found. If calling t-code with GuiShell: get_objects can\'t find objects in GuiShells, yet. Else, ')
-
+        
         if file_name.split('.')[-1].upper() not in ['XLSX', 'XLS']:
             raise ValueError('Library only supports exporting excel files for the time being')
-
-        export_option_id = self.export_options_dict.get(how, None)
-        self.session.FindById(export_option_id).select()
+        
+        if not self.export_options_dict:
+            helper_utils._find_shell_export(self.session)
+        else:
+            export_option_id = self.export_options_dict.get(how, None)
+            self.session.FindById(export_option_id).select()
 
         self.session.FindById("wnd[1]").sendVKey(0)  # Enter
 
@@ -494,3 +495,4 @@ class ObjectTree:
 
         self.path = os.path.join(directory, file_name)
         return self
+
