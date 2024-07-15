@@ -62,6 +62,11 @@ The `connect_SAP` function establishes a connection to the SAP system and return
 For detailed information and examples, please refer to the [PySAPRPA Documentation](https://github.com/eoinomahon/PySAPRPA/wiki/Docs).
 
 ## Changelog
+Author: Eoin O'Mahony
+LinkedIn: https://www.linkedin.com/in/eoin-omahony
+Email: eoinomahony028@gmail.com
+
+## Changelog
 
 ### Version 1.0.0
 
