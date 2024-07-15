@@ -247,8 +247,7 @@ class ObjectTree:
                 elif object_type == 'MENU':
                     self._process_menu_object(object_id, object_text)
                 elif object_type == 'SHELL':
-                    pass
-                    #self._process_shell_object() coming soon!
+                    self._process_shell_object(object_id, object_name)
                 else:
                     dict_key = object_left_label[-1] + '_' + object_type
                     sap_fields_dict.setdefault(dict_key, []).append(object_id)
@@ -291,9 +290,9 @@ class ObjectTree:
             field_text, self.repeat_field_label_dict = helper_utils._modify_repeat_name(object_text, self.repeat_field_label_dict)
             self.export_options_dict.setdefault(field_text, object_id)
     
-    def _process_shell_object(self):
-        # In prog
-        return
+    def _process_shell_object(self, object_id, object_name):
+        if object_name == 'shell':
+            self.sap_shell_id = object_id
 
     def set_parameters(
             self,
@@ -477,11 +476,15 @@ class ObjectTree:
         if file_name.split('.')[-1].upper() not in ['XLSX', 'XLS']:
             raise ValueError('Library only supports exporting excel files for the time being')
         
-        if not self.export_options_dict:
-            helper_utils._find_shell_export(self.session)
-        else:
+        if self.export_options_dict:
             export_option_id = self.export_options_dict.get(how, None)
             self.session.FindById(export_option_id).select()
+
+        elif self.sap_shell_id:
+            helper_utils._find_shell_export(self.session, self.sap_shell_id)
+
+        else:
+            raise ValueError('Export option not found')
 
         self.session.FindById("wnd[1]").sendVKey(0)  # Enter
 

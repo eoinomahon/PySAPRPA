@@ -54,15 +54,15 @@ class HelperUtils():
         return field_text, repeat_name_dict
     
     @staticmethod
-    def _find_shell_export(session):
+    def _find_shell_export(session, sap_shell_id):
         try:
-            session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").pressToolbarContextButton("&NAVIGATION_PROFILE_TOOLBAR_EXPAND")
+            session.findById(sap_shell_id).pressToolbarContextButton("&NAVIGATION_PROFILE_TOOLBAR_EXPAND")
         except Exception:
             pass # Expand button already expanded or doesn't exist
 
         try:
-            session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").pressToolbarContextButton("&MB_EXPORT")
-            session.findById("wnd[0]/usr/cntlCUSTOM/shellcont/shell/shellcont/shell").SelectContextMenuItem("&XXL")
+            session.findById(sap_shell_id).pressToolbarContextButton("&MB_EXPORT")
+            session.findById(sap_shell_id).SelectContextMenuItem("&XXL")
 
         except Exception:
             raise ValueError('Export not option')
