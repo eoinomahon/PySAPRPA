@@ -17,6 +17,7 @@ setup(
     install_requires=[
         'pandas',
         'pywin32',
+        'unidecode',
     ],
     python_requires='>=3.11.3',
 )
