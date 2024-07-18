@@ -30,6 +30,10 @@ To install PySAPRPA, follow these steps:
    pip install .
    ```
 
+## Prerequisites:
+1. Windows OS
+2. SAP GUI on local device
+
 ## Usage
 
 Getting started with PySAPRPA is straightforward. Import the library to start using its functions. Here's an example:
