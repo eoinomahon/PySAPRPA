@@ -375,7 +375,7 @@ class ObjectTree:
         if variant != '':
             set_parameter_utils._set_variant()
             temporary_tree = ObjectTree(self.session)
-            temporary_tree.get_objects(window=1).set_parameters(variant_TEXT=variant).execute()
+            temporary_tree.get_objects(window=1).set_parameters(variant_TEXT=variant).execute(vkey=8)
 
         for object_name, object_ids in self.sap_fields_dict.items():
             object_name_list = object_name.split('_')
